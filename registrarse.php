@@ -11,7 +11,7 @@
 
 
 
-			$link = mysqli_connect('mysql12.000webhost.com', 'a6235987_root', 'salta2266', 'a6235987_gastos');
+			$link = mysqli_connect('127.0.0.1', 'root', '2112', 'gastos_casa3');
 			$sql = 'SELECT nombre_usuario FROM usuarios '
 						. 'WHERE nombre_usuario = "'. $_POST['usuario']
 						. '" AND password = "'. $_POST['password'].'";';
@@ -37,7 +37,7 @@
 				}
 				session_start();
 				$_SESSION['ususesion'] = $_POST['usuario'];
-				header('Location: index.php');
+				header('Location: gastos.view.php');
 			}else{
 				$error = "Por favor, verifique los datos ingresados";
 			}

@@ -1,6 +1,6 @@
 <?php
 	if(!empty($_POST['usuario'])){
-		$link = mysqli_connect('mysql12.000webhost.com', 'a6235987_root', 'salta2266', 'a6235987_gastos');
+		$link = mysqli_connect('127.0.0.1', 'root', '2112', 'gastos_casa3');
 		$sql = 'SELECT * FROM usuarios WHERE nombre_usuario = "' . $_POST['usuario'] . '";';
 		$rs = mysqli_query($link, $sql);
 		mysqli_close($link);

@@ -9,7 +9,7 @@
 	}
 
 
-	//session_start();
+
 
 	$sql = 'SELECT * FROM usuarios';
 
@@ -17,11 +17,6 @@
 
 	$stmt->execute();
 
-	/*if(isset($_SESSION['carrito'])){
-		$carrito = $_SESSION['carrito'];
-		$peliculas = $carrito->getPeliculas();
-	}else{
-		$peliculas = array();
-	}*/
+
 
 	include 'index.view.php';
