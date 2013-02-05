@@ -14,7 +14,7 @@
 
 <hr />
 
-<!--<?php include 'form_gasto.view.php'; ?>-->
+
 
 </body>
 </html>

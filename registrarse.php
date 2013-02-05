@@ -37,7 +37,7 @@
 				}
 				session_start();
 				$_SESSION['ususesion'] = $_POST['usuario'];
-				header('Location: gastos.view.php');
+				header('Location: index.php');
 			}else{
 				$error = "Por favor, verifique los datos ingresados";
 			}
