@@ -21,14 +21,15 @@ a:hover {
 }
 
 #logo {
-	width: 100%;
-	height: 100%;
+	width: 780px;
+	height: 150px;
 	text-align: center;
 	background: #F0F0F0;
 }
 #logo img {
 	width: 780px;
 	height: 150px;
+	text-align: center;
 }
 
 #menu {

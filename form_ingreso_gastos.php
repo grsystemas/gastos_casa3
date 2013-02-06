@@ -1,22 +1,65 @@
-
-<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">-->
+<?php
+	require_once 'db.class.php';
+	session_start();
+	if(!isset($_SESSION['ususesion'])){
+		header('Location: registrarse.php');
+	}
+	?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
 	<title>Ingreso de gastos</title>
 
-	<!-- link calendar resources -->
+
 	<link rel="stylesheet" type="text/css" href="tcal.css" />
+	<link rel="stylesheet" type="text/css" href="estilos.css" />
 	<script type="text/javascript" src="tcal.js"></script>
 </head>
+
+
 <body>
 
-	<!-- add class="tcal" to your input field -->
-	<!--<div><input type="text" name="date" class="tcal" value="" /></div>
-</form>
-</body>
-</html>-->
 
+<?php include 'encabezado.php'; ?>
+
+<script type="text/javascript">
+	function validar() {
+		//document.f1.usuario.disabled = false;
+
+		// Si el valor del campo usuario es nulo
+		if (document.f1.fecha_gasto.value == '') {
+
+			alert ('La fecha es un dato obligatorio');
+
+			return false;
+		}
+		if (document.f1.detalle_gasto.value == '') {
+
+			alert ('El detalle del gasto es un dato obligatorio');
+
+			return false;
+		}
+
+		if (document.f1.cuota.value == '') {
+			// Alerto que es un campoi obligatorio
+			alert ('La cantidad de cuotas es un dato obligatorio');
+
+			// Cancelo el envio del formulario
+			return false;
+		}
+
+		if (document.f1.tipo_pago_id[1].checked && !document.f1.tarjeta_debito.checked ==false) {
+
+			alert ('El nombre de la tarjeta de débito es un dato obligatorio');
+
+
+			return false;
+		}
+
+		return true; // Envio el formulario
+	}
+</script>
 	<form name="f1" method="POST" action="insert_gastos.php" enctype="multipart/form-data" onsubmit="return validar();">
 		<table align="center">
 
@@ -27,7 +70,7 @@
 
 			<tr>
 				<td>Fecha del Gasto </td>
-				<td><input type="text" name="fecha_gasto" class="tcal" value="hacer clic aquí" /></td>
+				<td><input type="text" name="fecha_gasto" class="tcal" value="" /></td>
 
 			</tr>
 
@@ -37,11 +80,11 @@
 				<td rowspan="2">
 					<fieldset>
 						<legend>Tipo de Gasto</legend>
-						<input type="radio" name="tipo_gasto_id" value="1" <?php if($tipo == "fijo"){echo 'checked="checked"';} ?>>Fijo<br>
-						<input type="radio" name="tipo_gasto_id" value="2" <?php if($tipo == "comlim"){echo 'checked="checked"';} ?>>Comida y Limpieza<br>
-						<input type="radio" name="tipo_gasto_id" value="3" <?php if($tipo == "variable"){echo 'checked="checked"';} ?>>Variable<br>
-						<input type="radio" name="tipo_gasto_id" value="4" <?php if($tipo == "mantenimiento"){echo 'checked="checked"';} ?>>Mantenimiento<br>
-						<input type="radio" name="tipo_gasto_id" value="5" <?php if($tipo == "mejoras"){echo 'checked="checked"';} ?>>Mejoras<br>
+						<input type="radio" name="tipo_gasto_id" value="1" checked>Fijo<br>
+						<input type="radio" name="tipo_gasto_id" value="2">Comida y Limpieza<br>
+						<input type="radio" name="tipo_gasto_id" value="3">Variable<br>
+						<input type="radio" name="tipo_gasto_id" value="4">Mantenimiento<br>
+						<input type="radio" name="tipo_gasto_id" value="5">Mejoras<br>
 
 
 
@@ -66,9 +109,37 @@
 				<td rowspan="2">
 					<fieldset>
 						<legend>Tipo de Pago</legend>
-						<input type="radio" name="tipo_pago_id" value="1" <?php if($tipo == "efectivo"){echo 'checked="checked"';} ?>>Efectivo<br>
-						<input type="radio" name="tipo_pago_id" value="2" <?php if($tipo == "tarjeta"){echo 'checked="checked"';} ?>>Tarjeta de débito<br>
-						<input type="radio" name="tipo_pago_id" value="3" <?php if($tipo == "cuotastarjeta"){echo 'checked="checked"';} ?>>Tarjeta de crédito<br>
+						<input type="radio" name="tipo_pago_id" value="1" checked>Efectivo<br>
+						<input type="radio" name="tipo_pago_id" value="2">Tarjeta de débito<br>
+						<input type="radio" name="tipo_pago_id" value="3">Tarjeta de crédito<br>
+
+
+					</fieldset>
+				</td>
+
+
+			</tr>
+
+			<tr>
+
+				<td rowspan="2">
+					<fieldset>
+						<legend>Tarjeta de débito</legend>
+						<input type="radio" name="tarjeta_debito" value="1">Santander<br>
+						<input type="radio" name="tarjeta_debito" value="2">HSBC<br>
+
+					</fieldset>
+				</td>
+			</tr>
+
+			<tr>
+
+				<td rowspan="2">
+					<fieldset>
+						<legend>Tarjeta de crédito</legend>
+						<input type="radio" name="tarjeta_credito" value="1">Santander<br>
+						<input type="radio" name="tarjeta_credito" value="2">Galicia<br>
+
 
 
 					</fieldset>
@@ -92,3 +163,4 @@
 
 		</table>
 </body>
+</html>

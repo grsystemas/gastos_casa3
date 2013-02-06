@@ -7,7 +7,6 @@
 </head>
 <body>
 
-<div align="center" id="logo"><img src="images/banner3.png" alt="Proyecto Integrador" /></div>
 
 
 <?php include 'encabezado.php'; ?>

@@ -28,7 +28,7 @@ WHERE gastos.tipo_gasto_id=tipo_gastos.id AND gastos.tipo_pago_id=tipo_pagos.id'
 </head>
 
 <body>
-<div align="center" id="logo"><img src="images/banner3.png" alt="Proyecto Integrador" /></div>
+
 <?php include 'encabezado.php'; ?>
 
 
