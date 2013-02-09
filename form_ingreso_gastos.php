@@ -49,13 +49,6 @@
 			return false;
 		}
 
-		if (document.f1.tipo_pago_id[1].checked && !document.f1.tarjeta_debito.checked ==false) {
-
-			alert ('El nombre de la tarjeta de débito es un dato obligatorio');
-
-
-			return false;
-		}
 
 		return true; // Envio el formulario
 	}

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-02-2013 a las 02:28:23
+-- Tiempo de generación: 07-02-2013 a las 00:39:35
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -42,7 +42,6 @@ CREATE TABLE IF NOT EXISTS `ahorros` (
 
 CREATE TABLE IF NOT EXISTS `creditos` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `gasto_id` int(10) NOT NULL,
   `tarjeta_credito` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
@@ -51,9 +50,9 @@ CREATE TABLE IF NOT EXISTS `creditos` (
 -- Volcado de datos para la tabla `creditos`
 --
 
-INSERT INTO `creditos` (`id`, `gasto_id`, `tarjeta_credito`) VALUES
-(1, 0, 'santander'),
-(2, 0, 'galicia');
+INSERT INTO `creditos` (`id`, `tarjeta_credito`) VALUES
+(1, 'santander'),
+(2, 'galicia');
 
 -- --------------------------------------------------------
 
@@ -63,7 +62,6 @@ INSERT INTO `creditos` (`id`, `gasto_id`, `tarjeta_credito`) VALUES
 
 CREATE TABLE IF NOT EXISTS `debitos` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `gasto_id` int(10) NOT NULL,
   `tarjeta_debito` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
@@ -72,9 +70,9 @@ CREATE TABLE IF NOT EXISTS `debitos` (
 -- Volcado de datos para la tabla `debitos`
 --
 
-INSERT INTO `debitos` (`id`, `gasto_id`, `tarjeta_debito`) VALUES
-(1, 0, 'santander'),
-(2, 0, 'hsbc');
+INSERT INTO `debitos` (`id`, `tarjeta_debito`) VALUES
+(1, 'santander'),
+(2, 'hsbc');
 
 -- --------------------------------------------------------
 
@@ -91,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `gastos` (
   `tipo_pago_id` int(10) NOT NULL,
   `cuota` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Volcado de datos para la tabla `gastos`
@@ -107,7 +105,11 @@ INSERT INTO `gastos` (`id`, `fecha_gasto`, `tipo_gasto_id`, `detalle_gasto`, `mo
 (9, '2013-02-02', 4, 'auto', 4.00, 1, 136),
 (10, '2012-03-12', 4, 'auto', 4.00, 1, 136),
 (11, '2013-02-05', 2, 'verdura', 97.00, 1, 1),
-(12, '2013-02-04', 5, 'prueba 5', 123.00, 1, 1);
+(12, '2013-02-04', 5, 'prueba 5', 123.00, 1, 1),
+(13, '2013-02-04', 1, 'www', 12.00, 2, 1),
+(14, '2013-02-05', 1, 'qq', 12.00, 2, 4),
+(15, '2013-02-05', 1, 'aa', 23.00, 2, 6),
+(16, '2013-02-04', 3, 'qq', 1234.00, 2, 8);
 
 -- --------------------------------------------------------
 
