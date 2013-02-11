@@ -7,13 +7,8 @@
 		header('Location: registrarse.php');
 	}
 
-	$sql = 'SELECT gastos.fecha_gasto, tipo_gastos.nombre_tipo_gasto, gastos.detalle_gasto,
-gastos.monto_gasto, tipo_pagos.nombre_tipo_pago, gastos.cuota FROM gastos, tipo_gastos, tipo_pagos
-WHERE gastos.tipo_gasto_id=tipo_gastos.id AND gastos.tipo_pago_id=tipo_pagos.id';
-	$gasto = new Gasto(id);
-	$stmt = DB::getStatement($sql);
+	require_once 'consultar_gastos.php';
 
-	$stmt->execute();
 ?>
 
 
@@ -23,7 +18,9 @@ WHERE gastos.tipo_gasto_id=tipo_gastos.id AND gastos.tipo_pago_id=tipo_pagos.id'
 <head>
 	<title>Registrarse</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="estilos.css" />
+	<link rel="stylesheet" type="text/css" href="tcal.css" />
+	<link rel="stylesheet" type="text/css" href="estilos.css" />
+	<script type="text/javascript" src="tcal.js"></script>
 
 </head>
 
@@ -31,9 +28,17 @@ WHERE gastos.tipo_gasto_id=tipo_gastos.id AND gastos.tipo_pago_id=tipo_pagos.id'
 
 <?php include 'encabezado.php'; ?>
 
-
-<h2 align="center">Listado de Gastos</h2>
+<form name="f1" method="POST" action="" enctype="multipart/form-data">
+<h2 align="center">Consulta de Gastos por Fecha</h2>
 <table align="center" border="1" width="57%" cellspacing="0">
+	<tr>
+		<th>Desde la fecha</th>
+		<td><input type="text" name="fecha_desde" class="tcal" value="" /></td>
+		<th>Hasta la fecha</th>
+		<td><input type="text" name="fecha_hasta" class="tcal" value="" /></td>
+		<td><input type="submit" value="Consultar" name="seleccion"></td>
+	</tr>
+
 	<tr>
 		<th>Fecha de gasto</th>
 		<th>Tipo de gasto</th>
@@ -62,5 +67,7 @@ WHERE gastos.tipo_gasto_id=tipo_gastos.id AND gastos.tipo_pago_id=tipo_pagos.id'
 	?>
 
 </table>
+
+
 </body>
 </html>

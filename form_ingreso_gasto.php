@@ -53,7 +53,7 @@
 		return true; // Envio el formulario
 	}
 </script>
-	<form name="f1" method="POST" action="insert_gastos.php" enctype="multipart/form-data" onsubmit="return validar();">
+	<form name="f1" method="POST" action="insert_gasto.php" enctype="multipart/form-data" onsubmit="return validar();">
 		<table align="center">
 
 			<tr>

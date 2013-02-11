@@ -31,7 +31,7 @@
 		}
 
 		function ingresarGasto(){
-			$sql = 'INSERT INTO gastos WHERE id = :id';
+			$sql = 'INSERT INTO gastos(fecha_gasto, tipo_gasto_id, detalle_gasto, monto_gasto, tipo_pago_id, cuota)';
 			$stmt = DB::getStatement($sql);
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 			$stmt->execute();
@@ -67,3 +67,4 @@
 			$this->cuota = $gasto->cuota;
 		}
 	}
+
