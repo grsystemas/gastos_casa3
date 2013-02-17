@@ -1,7 +1,7 @@
 <?php
 	include 'validar.php';
 
-	//require_once 'gasto.class.php';
+	
 
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
